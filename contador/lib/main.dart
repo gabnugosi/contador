@@ -20,10 +20,26 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(255, 253, 253, 253),
-      alignment: Alignment.center,
-      child: const Text("Olá mundo!!"),
-    );
+    return const Scaffold(
+        backgroundColor: Colors.black,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Pode entrar!',
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700),
+            ),
+            Text(
+              '0',
+              style: TextStyle(
+                  fontSize: 100,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
+        ));
   }
 }
