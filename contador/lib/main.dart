@@ -18,10 +18,14 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  void increment() {}
+
+  void decrement() {}
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -38,6 +42,23 @@ class HomePage extends StatelessWidget {
                   fontSize: 100,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'Saiu',
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    )),
+                TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'Entrou',
+                      style: TextStyle(color: Colors.black,fontSize: 16),
+                    ))
+              ],
             )
           ],
         ));
