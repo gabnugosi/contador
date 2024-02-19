@@ -43,6 +43,10 @@ class _HomePageState extends State<HomePage> {
     log('Saiu btn: $count');
   }
 
+
+  bool get isEmpty => count == 0;
+  bool get isFull => count == 20;
+
   @override
   Widget build(BuildContext context) {
     log("Build");
@@ -57,9 +61,9 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Pode entrar!',
-                  style: TextStyle(
+                 Text(
+                  isFull ? 'Lotado' : 'Pode entrar!',
+                  style: const TextStyle(
                       fontSize: 30,
                       color: Colors.black,
                       fontWeight: FontWeight.w700),
@@ -68,9 +72,9 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(40),
                   child: Text(
                     count.toString(), //valor que é incrementado e decrementado pelos botões
-                    style: const TextStyle(
+                    style:  TextStyle(
                         fontSize: 100,
-                        color: Colors.black,
+                        color: isFull ? Colors.red : Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -78,9 +82,9 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextButton(
-                        onPressed: decrement,
+                        onPressed: isEmpty ? null : decrement,
                         style: TextButton.styleFrom(
-                            backgroundColor: Colors.black,
+                            backgroundColor: isEmpty ? Colors.black.withOpacity(0.2): Colors.black,
                             fixedSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24),
@@ -91,9 +95,9 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         )),
                     TextButton(
-                        onPressed: increment,
+                        onPressed: isFull ? null : increment,
                         style: TextButton.styleFrom(
-                            backgroundColor: Colors.black,
+                            backgroundColor: isFull ? Colors.black.withOpacity(0.2): Colors.black,
                             fixedSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24),
