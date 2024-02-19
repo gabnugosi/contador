@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,45 +20,64 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void increment() {}
+  void increment() {
+    log('Incremento btn');
+  }
 
-  void decrement() {}
+  void decrement() {
+    log('Decremento btn');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         backgroundColor: Colors.red,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Pode entrar!',
               style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
                   fontWeight: FontWeight.w700),
             ),
-            Text(
+            const Padding(padding: EdgeInsets.all(40),
+            child: Text(
               '0',
               style: TextStyle(
                   fontSize: 100,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
-            ),
+            ),),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                    onPressed: null,
-                    child: Text(
+                    onPressed: decrement,
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        fixedSize: const Size(100, 100),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        foregroundColor: Colors.black),
+                    child: const Text(
                       'Saiu',
                       style: TextStyle(color: Colors.black, fontSize: 16),
                     )),
                 TextButton(
-                    onPressed: null,
-                    child: Text(
+                    onPressed: increment,
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        fixedSize: const Size(100, 100),
+                        shape:  RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        foregroundColor: Colors.black),
+                    child: const Text(
                       'Entrou',
-                      style: TextStyle(color: Colors.black,fontSize: 16),
+                      style: TextStyle(color: Colors.black, fontSize: 16),
                     ))
               ],
             )
