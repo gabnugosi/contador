@@ -17,20 +17,36 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
+
   void increment() {
-    log('Incremento btn');
+    setState(() {
+      count ++;  
+    });
+    
+    log('Entrou btn: $count');
   }
 
   void decrement() {
-    log('Decremento btn');
+    setState(() {
+      count --;  
+    });
+
+    log('Saiu btn: $count');
   }
 
   @override
   Widget build(BuildContext context) {
+    log("Build");
+
     return Scaffold(
         backgroundColor: Colors.red,
         body: Container(
@@ -48,11 +64,11 @@ class HomePage extends StatelessWidget {
                       color: Colors.black,
                       fontWeight: FontWeight.w700),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(40),
+                 Padding(
+                  padding: const EdgeInsets.all(40),
                   child: Text(
-                    '0',
-                    style: TextStyle(
+                    count.toString(), //valor que é incrementado e decrementado pelos botões
+                    style: const TextStyle(
                         fontSize: 100,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -93,3 +109,4 @@ class HomePage extends StatelessWidget {
             )));
   }
 }
+
